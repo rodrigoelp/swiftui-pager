@@ -4,11 +4,11 @@ import SwiftUI
 private struct Page<Content>: View where Content: View {
     private let content: () -> Content
 
-    @inlinable init(@ViewBuilder content: @escaping () -> Content) {
+    init(@ViewBuilder content: @escaping () -> Content) {
         self.content = content
     }
 
-    @usableFromInline var body: some View {
+    var body: some View {
         VStack {
             content()
         }
@@ -29,7 +29,7 @@ public struct PagerStyle {
 
     let animation: Animation
 
-    init(interPagePadding: CGFloat = 20,
+    public init(interPagePadding: CGFloat = 20,
          pageSize: CGSize = .init(width: 300, height: 500),
          maxPage: Int = 20,
          focusedScale: CGFloat = 1,

@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "Pager",
     platforms: [ .iOS(.v13),
-                 .watchOS(.v5),
+                 .watchOS(.v6),
                  .macOS(.v10_15)
     ],
     products: [

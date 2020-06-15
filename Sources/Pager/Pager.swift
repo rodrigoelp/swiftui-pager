@@ -15,6 +15,13 @@ private struct Page<Content>: View where Content: View {
     }
 }
 
+@_functionBuilder
+public struct PageBuilder {
+    public static func buildBlock<T: View>(_ children: T...) -> [T] {
+        children
+    }
+}
+
 /// Describes styling used to position elements/pages or alter
 /// visual aspects of the pager (such as the animation used to
 /// smooth out positioning, scale, etc).
@@ -69,7 +76,7 @@ public struct Pager<Content>: View where Content: View {
 
     public init(
         style: PagerStyle = PagerStyle.default,
-        @ViewBuilder pages: @escaping () -> [Content]
+        @PageBuilder pages: @escaping () -> [Content]
     ) {
         views = pages().map { view in Page { view } }
         self.style = style
